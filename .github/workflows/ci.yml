@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'  # change if you use another Python version
+          python-version: '3.10'  # change if you use another Python version
 
       - name: Install dependencies
         run: |
@@ -31,4 +31,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t project1-fastapi .
+
+
+
 
