@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: postgres1
+      POSTGRES_PASSWORD: yournewpass
+      POSTGRES_DB: project1db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  #  ports:
+  #    - "5432:5432"
+
+  web:
+    build: .
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres1:yournewpass@db:5432/project1db
+
+volumes:
+  pgdata:
+
